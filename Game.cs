@@ -148,6 +148,7 @@ namespace Space_Invaders
                             if (enemy[i, j].destroyed == false)
                             {
                                 ColisionDetection(enemy[i, j]);
+                                
                             }
                         }
                 }
@@ -161,6 +162,8 @@ namespace Space_Invaders
             {
                 enemy.destroyed = true;
                 isBullet = false;
+                bullet.SetBullet_Y(player.Y);
+                bullet.SetBullet_X(player.X);
             }
         }
 

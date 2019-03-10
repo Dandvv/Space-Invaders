@@ -55,5 +55,15 @@ namespace Space_Invaders
         {
             created = false;
         }
+
+        public void SetBullet_Y(float y)
+        {
+            this.y = y;
+        }
+
+        public void SetBullet_X(float x)
+        {
+            this.x = x;
+        }
     }
 }
