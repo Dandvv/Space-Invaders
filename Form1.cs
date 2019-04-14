@@ -14,26 +14,36 @@ namespace Space_Invaders
 {
     public partial class FrmGameScreen : Form
     {
-        private Game game; 
+        private Game game;
+        Boolean gameOver = false;
 
         public FrmGameScreen()
         {
             InitializeComponent();
             game = new Game(PcbGameScreen);
+            BtnGameStart.FlatAppearance.MouseDownBackColor = Color.Black;
+            BtnGameClose.FlatAppearance.MouseDownBackColor = Color.Black;
         }
 
         private void BtnGameStart_Click(object sender, EventArgs e)
         {
-            Boolean GAMEOVER = false;
+            //Boolean GAMEOVER = false;
             
-            while (!GAMEOVER)
+            while (!gameOver)
             {
                 game.Logic();
                 game.UserInput();
                 game.Draw();
 
-                GAMEOVER = game.IsGameOver();
+                gameOver = game.IsGameOver();
             }
         }
+
+        private void BtnGameClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            gameOver = true;
+        }
+
     }
 }
