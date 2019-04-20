@@ -12,6 +12,9 @@ namespace Space_Invaders
         private Bullet bullet;
         float x, y, width, height;
         static float PLAYERHEIGHT = 40;
+        private float playerSpeed = 1.5F;
+
+        public int playerScore { get; set; }
 
         public float X { get { return this.x; } }
         public float Y { get { return this.y; } }
@@ -28,12 +31,12 @@ namespace Space_Invaders
         public void Draw()
         {
             g = PcbGameScreen.CreateGraphics();
-            g.FillRectangle(new SolidBrush(Color.DeepSkyBlue), x, y, width, height);
+            g.FillRectangle(new SolidBrush(Color.DeepSkyBlue), this.x, this.y, width, height);
         }
 
         public void Move(float xdir)
         {
-            this.x = this.x + xdir;
+            this.x = this.x + (playerSpeed * xdir);
         }
 
         public Bullet Shoot()

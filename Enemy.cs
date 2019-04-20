@@ -8,7 +8,7 @@ namespace Space_Invaders
         Graphics g;
         private PictureBox PcbGameScreen;
         float x, y, width, height;
-        float xdir = 1F;
+        float xdir = 0.5F;
         public bool destroyed = false;
 
         public float Xdir
@@ -64,7 +64,7 @@ namespace Space_Invaders
         public void Hitedge()
         {
             this.xdir = this.xdir *(-1);
-            this.y = this.y + 5*height;
+            this.y = this.y + 1*height;
         }
 
     }

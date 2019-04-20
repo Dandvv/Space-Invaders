@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace Space_Invaders
 {
@@ -13,14 +14,16 @@ namespace Space_Invaders
         private Player player;
         private PictureBox PcbGameScreen;
         private Bullet bullet = null;
+        private Label lblScore;
         bool endofScreen = false;
         bool isBullet = false;
         bool endofgame = false;
+        
 
         [DllImport("User32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         public static extern bool GetAsyncKeyState(Keys vKey);
 
-        public Game(PictureBox GameScreen)
+        public Game(PictureBox GameScreen, Label lblScore)
         {
             PcbGameScreen = GameScreen;
             float enemyX = 0, enemyY = 0, width = 20, height = 20;
@@ -35,6 +38,7 @@ namespace Space_Invaders
 
             player = new Player(GameScreen);
 
+            this.lblScore = lblScore;
         }
 
         public void UserInput()
@@ -93,7 +97,7 @@ namespace Space_Invaders
                 {
                     //if (bullet.used == false)
                     //{
-                        bullet.Draw();
+                    bullet.Draw();
                     //}
                 }
             }
@@ -103,11 +107,15 @@ namespace Space_Invaders
         {
             // check if the enemy is on the edge of the screen.
             for (int i = 0; i <= enemiesperLine - 1; i++)
+
                 for (int j = 0; j <= enemiesperRow - 1; j++)
                 {
                     if ((enemy[i, j].X + enemy[i, j].Width) >= PcbGameScreen.Width || enemy[i, j].X <= 0)
                     {
-                        endofScreen = true;
+                        if (enemy[i, j].destroyed == false)
+                        {
+                            endofScreen = true;
+                        }
                     }
                 }
             
@@ -117,7 +125,7 @@ namespace Space_Invaders
                 for (int i = 0; i <= enemiesperLine - 1; i++)
                     for (int j = 0; j <= enemiesperRow - 1; j++)
                     {
-                        enemy[i, j].Hitedge();
+                            enemy[i, j].Hitedge();
                     }
             }
 
@@ -147,7 +155,7 @@ namespace Space_Invaders
                         {
                             if (enemy[i, j].destroyed == false)
                             {
-                                ColisionDetection(enemy[i, j]);
+                                BulletColisionDetection(enemy[i, j]);
                                 
                             }
                         }
@@ -155,15 +163,26 @@ namespace Space_Invaders
             }
         }
 
-        public void ColisionDetection(Enemy enemy)
+        public void BulletColisionDetection(Enemy enemy)
         {
             if (bullet.Y <= enemy.Y + 20 && bullet.Y >= enemy.Y &&
                 bullet.X >= enemy.X && bullet.X <+ enemy.X + 20)
             {
                 enemy.destroyed = true;
                 isBullet = false;
-                bullet.SetBullet_Y(player.Y);
-                bullet.SetBullet_X(player.X);
+                
+                //if the 2 line bellow are not executed 
+                //every time the bullet hits a enemy the next bullet will be 
+                //created in the same location where the previous bullet colide with the enemy
+                //and if they are executed the next bullet will be created at same
+                //coordinates the previous bullet was created.
+                //bullet.SetBullet_Y(player.Y);
+                //bullet.SetBullet_X(player.X);
+
+                bullet.Dispose();
+
+                ScoreUpdate();
+
             }
         }
 
@@ -179,6 +198,14 @@ namespace Space_Invaders
         public Boolean IsGameOver()
         {
             return endofgame;
+        }
+
+        public void ScoreUpdate()
+        {
+            player.playerScore = player.playerScore + 50;
+            lblScore.Text = player.playerScore.ToString();
+            lblScore.Invalidate();
+            lblScore.Update();
         }
     }
 
