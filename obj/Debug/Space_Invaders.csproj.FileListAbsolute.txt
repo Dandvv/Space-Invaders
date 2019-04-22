@@ -18,3 +18,4 @@ D:\source\repos\Space_Invaders\Space_Invaders\obj\Debug\Space_Invaders.csproj.Ge
 D:\source\repos\Space_Invaders\Space_Invaders\obj\Debug\Space_Invaders.csproj.CoreCompileInputs.cache
 D:\source\repos\Space_Invaders\Space_Invaders\obj\Debug\Space_Invaders.exe
 D:\source\repos\Space_Invaders\Space_Invaders\obj\Debug\Space_Invaders.pdb
+D:\source\repos\Space_Invaders\Space_Invaders\obj\Debug\Space_Invaders.frmGetPlayerName.resources

@@ -12,20 +12,23 @@ namespace Space_Invaders
         private Bullet bullet;
         float x, y, width, height;
         static float PLAYERHEIGHT = 40;
-        private float playerSpeed = 1.5F;
+        private readonly float playerSpeed = 1.5F;
 
         public int playerScore { get; set; }
+        public string playerName { get; }
+
 
         public float X { get { return this.x; } }
         public float Y { get { return this.y; } }
 
-        public Player(PictureBox GameScreen)
+        public Player(PictureBox GameScreen, string playerName)
         {
             PcbGameScreen = GameScreen;
             x = PcbGameScreen.Width / 2;
             y = PcbGameScreen.Height - PLAYERHEIGHT;
             width = 20;
             height = PLAYERHEIGHT;
+            this.playerName = playerName;
         }
 
         public void Draw()

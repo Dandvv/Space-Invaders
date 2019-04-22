@@ -34,6 +34,7 @@
             this.BtnGameClose = new System.Windows.Forms.Button();
             this.pcbLogo = new System.Windows.Forms.PictureBox();
             this.lblScore = new System.Windows.Forms.Label();
+            this.lblBestRecord = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PcbGameScreen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).BeginInit();
             this.SuspendLayout();
@@ -96,12 +97,24 @@
             this.lblScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblScore.UseMnemonic = false;
             // 
+            // lblBestRecord
+            // 
+            this.lblBestRecord.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBestRecord.ForeColor = System.Drawing.Color.Yellow;
+            this.lblBestRecord.Location = new System.Drawing.Point(965, 728);
+            this.lblBestRecord.Name = "lblBestRecord";
+            this.lblBestRecord.Size = new System.Drawing.Size(126, 25);
+            this.lblBestRecord.TabIndex = 3;
+            this.lblBestRecord.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblBestRecord.UseMnemonic = false;
+            // 
             // FrmGameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1184, 762);
+            this.Controls.Add(this.lblBestRecord);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.pcbLogo);
             this.Controls.Add(this.BtnGameClose);
@@ -123,6 +136,7 @@
         private System.Windows.Forms.Button BtnGameClose;
         private System.Windows.Forms.PictureBox pcbLogo;
         private System.Windows.Forms.Label lblScore;
+        private System.Windows.Forms.Label lblBestRecord;
     }
 }
 

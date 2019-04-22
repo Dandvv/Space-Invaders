@@ -23,7 +23,7 @@ namespace Space_Invaders
         [DllImport("User32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         public static extern bool GetAsyncKeyState(Keys vKey);
 
-        public Game(PictureBox GameScreen, Label lblScore)
+        public Game(PictureBox GameScreen, Label lblScore, string playerName)
         {
             PcbGameScreen = GameScreen;
             float enemyX = 0, enemyY = 0, width = 20, height = 20;
@@ -36,7 +36,7 @@ namespace Space_Invaders
                     enemy[i, j] = new Enemy(GameScreen, enemyX*40 + 40, enemyY*40 + 40, width, height);
                 }
 
-            player = new Player(GameScreen);
+            player = new Player(GameScreen, playerName);
 
             this.lblScore = lblScore;
         }
@@ -156,7 +156,6 @@ namespace Space_Invaders
                             if (enemy[i, j].destroyed == false)
                             {
                                 BulletColisionDetection(enemy[i, j]);
-                                
                             }
                         }
                 }
@@ -180,9 +179,7 @@ namespace Space_Invaders
                 //bullet.SetBullet_X(player.X);
 
                 bullet.Dispose();
-
                 ScoreUpdate();
-
             }
         }
 

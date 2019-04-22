@@ -8,14 +8,25 @@ namespace Space_Invaders
     {
         private Game game;
         Boolean gameOver = false;
+        frmGetPlayerName frmGetPlayerName = new frmGetPlayerName();
+        public string playerName;
 
         public FrmGameScreen()
         {
+            frmGetPlayerName.ShowDialog(this);
+            playerName = frmGetPlayerName.playerName;
+
             InitializeComponent();
-            game = new Game(PcbGameScreen, lblScore);
+            game = new Game(PcbGameScreen, lblScore, playerName);
             BtnGameStart.FlatAppearance.MouseDownBackColor = Color.Black;
             BtnGameClose.FlatAppearance.MouseDownBackColor = Color.Black;
 
+            //frmGetPlayerName.ShowDialog(this);
+            //frmGetPlayerName.Show();
+            //frmGetPlayerName.Focus();
+            //frmGetPlayerName.TopMost = true;
+
+            //Application.OpenForms["frmGetPlayerName"].BringToFront();
         }
 
         private void BtnGameStart_Click(object sender, EventArgs e)
@@ -23,6 +34,15 @@ namespace Space_Invaders
             pcbLogo.Visible = false;
             BtnGameClose.Visible = false;
             BtnGameStart.Visible = false;
+            
+            /*
+            playerName
+
+            do
+            {
+                frmGetPlayerName.ShowDialog(this);
+            } while(playerName)
+            */
 
             while (!gameOver)
             {
