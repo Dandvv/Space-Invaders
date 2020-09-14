@@ -21,12 +21,6 @@ namespace Space_Invaders
             BtnGameStart.FlatAppearance.MouseDownBackColor = Color.Black;
             BtnGameClose.FlatAppearance.MouseDownBackColor = Color.Black;
 
-            //frmGetPlayerName.ShowDialog(this);
-            //frmGetPlayerName.Show();
-            //frmGetPlayerName.Focus();
-            //frmGetPlayerName.TopMost = true;
-
-            //Application.OpenForms["frmGetPlayerName"].BringToFront();
         }
 
         private void BtnGameStart_Click(object sender, EventArgs e)
@@ -35,20 +29,11 @@ namespace Space_Invaders
             BtnGameClose.Visible = false;
             BtnGameStart.Visible = false;
             
-            /*
-            playerName
-
-            do
-            {
-                frmGetPlayerName.ShowDialog(this);
-            } while(playerName)
-            */
-
             while (!gameOver)
             {
                 game.UserInput();
-                game.Draw();
                 game.Logic();
+                game.Draw();
 
                 gameOver = game.IsGameOver();
             }

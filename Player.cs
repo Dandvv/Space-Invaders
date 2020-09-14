@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
-using System;
-using System.Runtime.InteropServices;
+//using System;
+//using System.Runtime.InteropServices;
 
 namespace Space_Invaders
 {
@@ -45,7 +45,6 @@ namespace Space_Invaders
         public Bullet Shoot()
         {
             bullet = new Bullet(PcbGameScreen, (this.x + 5), (this.y - 10));
-
             return bullet;
         }
     }

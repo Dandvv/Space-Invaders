@@ -24,5 +24,14 @@ namespace Space_Invaders
             this.playerName = txbPlayerName.Text;
             this.Close();
         }
+
+        private void txbPlayerName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.playerName = txbPlayerName.Text;
+                this.Close();
+            }
+        }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.ComponentModel;
-using System.Drawing;
+//using System.ComponentModel;
+//using System.Drawing;
 
 namespace Space_Invaders
 {
@@ -95,10 +95,10 @@ namespace Space_Invaders
                 }
                 else
                 {
-                    //if (bullet.used == false)
-                    //{
+                    if (bullet.used == false)
+                    {
                     bullet.Draw();
-                    //}
+                    }
                 }
             }
         }
@@ -168,20 +168,12 @@ namespace Space_Invaders
                 bullet.X >= enemy.X && bullet.X <+ enemy.X + 20)
             {
                 enemy.destroyed = true;
-                isBullet = false;
+                bullet.used = true;
                 
-                //if the 2 line bellow are not executed 
-                //every time the bullet hits a enemy the next bullet will be 
-                //created in the same location where the previous bullet colide with the enemy
-                //and if they are executed the next bullet will be created at same
-                //coordinates the previous bullet was created.
-                //bullet.SetBullet_Y(player.Y);
-                //bullet.SetBullet_X(player.X);
-
-                bullet.Dispose();
                 ScoreUpdate();
             }
         }
+
 
         public void PlayerColision(Enemy enemy)
         {
@@ -203,6 +195,11 @@ namespace Space_Invaders
             lblScore.Text = player.playerScore.ToString();
             lblScore.Invalidate();
             lblScore.Update();
+        }
+
+        public void Record(string player, int score)
+        {
+            string[] lines = System.IO.File.ReadAllLines(@"");
         }
     }
 

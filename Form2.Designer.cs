@@ -54,6 +54,7 @@
             this.txbPlayerName.Size = new System.Drawing.Size(134, 26);
             this.txbPlayerName.TabIndex = 1;
             this.txbPlayerName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txbPlayerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbPlayerName_KeyDown);
             // 
             // button1
             // 
